@@ -15,11 +15,13 @@ echo "\033[1;37m"
 
 
 # Verifica quantidade e imprime
-if [ $arq_bruto -gt 2006 ]
+if [ $arq_bruto -lt 9006 ]
 then
 		echo "\033[1;42;97m É alocavel $arq_human \033[0m"
+		sleep 2
 	else
 		echo "\033[1;41;97m Não tem condições de ser alocado $arq_human \033[0m"
+		sleep 2
 fi
 # Mantendo notificado o da infra
 if [ $USER = "root" ]
@@ -36,13 +38,14 @@ then
 		echo "[ \033[1;32m*\033[0m ] Dando permissoes..."
 		echo "0 *	* * *	root	/etc/EsigControle/Alocacao.sh" >> /etc/crontab
 		echo "Agendando crontab, veja em /etc/crontab/:"
+		sleep 1
 		cat /etc/crontab
 		
 	}	||	{
 		echo "[ \033[1;31mX\033[0m ] /etc/EsigControle/\n"
 		echo "[ \033[1;31mX\033[0m ] Copiar arquivo para /etc/EsigControle/"
 		echo "[ \033[1;31mX\033[0m ] Hmm, permissão nao é porque estás como root... \nFale com Julio pra dar uma analizada nisso"
-
+		sleep 1
 		exit
 	}
 else
