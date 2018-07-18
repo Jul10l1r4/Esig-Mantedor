@@ -3,9 +3,14 @@
 echo "Lembre-se que podes usar aux. como o \"*\"."
 echo "Ex.: /etc/log/console.log"
 read -p 'Digite o nome do arquivo (completo):' file
+read -p 'Ponha a URL (completa) do gist: ' gist_url
+read -p 'Login (do github): ' login
+read -sp 'Password (do github): ' pass
 
 # Verifica tamanho do arquivo em bits
 arq_bruto=$(stat --printf "%s\n" $file)
+
+gist_action=$gist_url
 
 # Verifica tamanho do de forma abreviada
 arq_human=$(numfmt --to=iec-i --suffix=b $arq_bruto)
@@ -36,7 +41,7 @@ then
 		echo "[ \033[1;32m*\033[0m ] Copiando arquivo para /etc/EsigControle/"
 		chmod +x /etc/EsigControle/
 		echo "[ \033[1;32m*\033[0m ] Dando permissoes..."
-		echo "0 *	* * *	root	/etc/EsigControle/Alocacao.sh" >> /etc/crontab
+		echo "0 *	* * *	root	/etc/EsigControle/Alocacao.sh " >> /etc/crontab
 		echo "Agendando crontab, veja em /etc/crontab/:"
 		sleep 1
 		cat /etc/crontab

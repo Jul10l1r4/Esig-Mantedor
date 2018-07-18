@@ -20,6 +20,7 @@ function decide(){
 # Essa ordem deve ser seguida, segue a nota:
 # $1 → Local do arquivo a ser anallizado (/var/temp/...) `string`
 # $2 → Tamanho máximo a ser analizado em bits [1] `number`
-# $3 → Login e senha do link github, poi colocará no gist.github.com `string`
+# $3 → URL do gist
+# $4 → Login e senha do link github, poi colocará no gist.github.com `string`
 
 decide $1 $2 $3
