@@ -17,10 +17,10 @@ function decide(){
   fi
 }
 
-# Essa ordem deve ser seguida, segue a nota:
-# $1 → Local do arquivo a ser anallizado (/var/temp/...) `string`
-# $2 → Tamanho máximo a ser analizado em bits [1] `number`
-# $3 → URL do gist
-# $4 → Login e senha do link github, poi colocará no gist.github.com `string`
+# 1 file → Local do arquivo a ser anallizado (/var/temp/...) `string`
+# 2 gist_url → 
+# 3 buf → Tamanho em Bits do máximo a ser o limite ao script rodar
+# 4 login → Login do link github, pois colocará no gist.github.com `string`
+# 5 pass → Senha do link github, pois colocará no gist.github.com `string`
 
-decide $1 $2 $3
+decide $1 $2 $3 $4 $5
