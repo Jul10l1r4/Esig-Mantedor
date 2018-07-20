@@ -5,21 +5,17 @@ echo "Ex.: /etc/log/console.log"
 
 # Dados que serão enviados à `Alocacao.sh`
 #	file → Local do arquivo a ser anallizado (/var/temp/...) `string`
-#	gist_url → 
 #	buf → Tamanho em Bits do máximo a ser o limite ao script rodar
 #	login → Login do link github, pois colocará no gist.github.com `string`
 #	pass → Senha do link github, pois colocará no gist.github.com `string`
 
 read -p 'Digite o nome do arquivo (completo):' file
-read -p 'Ponha a URL (completa) do gist: ' gist_url
 read -p 'Até quantos bits deseja para o limite (1024B é 1Kb)?: ' buf
 read -p 'Login (do github): ' login
 read -sp 'Password (do github): ' pass
 
 # Verifica tamanho do arquivo em bits
 arq_bruto=$(stat --printf "%s\n" $file)
-
-gist_action=$gist_url
 
 # Verifica tamanho do de forma abreviada
 arq_human=$(numfmt --to=iec-i --suffix=b $arq_bruto)
@@ -50,7 +46,7 @@ then
 		echo "[ \033[1;32m*\033[0m ] Copiando arquivo para /etc/EsigControle/"
 		chmod +x /etc/EsigControle/
 		echo "[ \033[1;32m*\033[0m ] Dando permissoes..."
-		echo "0 *	* * *	root	/etc/EsigControle/Alocacao.sh $file $gist_url $buf $login $pass" >> /etc/crontab
+		echo "0 *	* * *	root	/etc/EsigControle/Alocacao.sh $file $buf $login $pass" >> /etc/crontab
 		echo "Agendando crontab, veja em /etc/crontab/:"
 		sleep 1
 		cat /etc/crontab
