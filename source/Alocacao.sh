@@ -12,7 +12,9 @@ function decide(){
       #
       conteudo="$(cat  $1)"
       curl --user "$3:$4" -H --data-urlencode "Content-Type: application/json" -d '{"description": "Arquivo de log $(date)","public": false,"files": {"Log $(date)": {"content": "$conteudo"}}}' https://api.github.com/gists
-
+      	# Procedurando as coisas, low level is life B-). 
+	# echo -n igual a incrmentar "0 content in file"
+	echo -n > $1
   	else
       #
       # Executar ação aqui

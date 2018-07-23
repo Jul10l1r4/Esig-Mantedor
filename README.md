@@ -1,2 +1,2 @@
-# Esig-Mantedor
-Projeto criado para infra afim de evitar problemas de alocação entre outras
+# LogClear
+Projeto criado para infra afim de evitar problemas de alocação de logs
