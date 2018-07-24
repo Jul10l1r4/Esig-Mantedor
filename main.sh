@@ -12,7 +12,7 @@ echo "Ex.: /etc/log/console.log"
 read -p 'Digite o nome do arquivo (completo):' file
 read -p 'Até quantos bits deseja para o limite (1024B é 1Kb)?: ' buf
 read -p 'Login (do github): ' login
-read -sp 'Password (do github): ' pass
+read -s -p 'Password (do github): ' pass
 
 # Verifica tamanho do arquivo em bits
 arq_bruto=$(stat --printf "%s\n" $file)
