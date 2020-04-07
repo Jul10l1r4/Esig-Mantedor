@@ -3,7 +3,7 @@
 echo "Lembre-se que podes usar aux. como o \"*\"."
 echo "Ex.: /etc/log/console.log"
 
-# Dados que serão enviados à `Alocacao.sh`
+# Dados que serão enviados à `sync_up.sh`
 #	file → Local do arquivo a ser anallizado (/var/temp/...) `string`
 #	buf → Tamanho em Bits do máximo a ser o limite ao script rodar
 #	login → Login do link github, pois colocará no gist.github.com `string`
@@ -41,20 +41,20 @@ then
 	# Uma forma de try/catch
 	echo "[ \033[1;32m*\033[0m ] Criando diretórios..."
 	{
-		mkdir /etc/Controle
-		echo "[ \033[1;32m*\033[0m ] /etc/Controle/"
-		mv source/Alocacao.sh /etc/Controle/Alocacao.sh
-		echo "[ \033[1;32m*\033[0m ] Copiando arquivo para /etc/Controle/"
-		chmod +x /etc/Controle/
+		mkdir /opt/log-up/
+		echo "[ \033[1;32m*\033[0m ] /opt/log-up/"
+		mv "source/sync_up.sh" "/opt/log-up/sync_up.sh"
+		echo "[ \033[1;32m*\033[0m ] Copiando arquivo para /opt/log-up/"
+		chmod +x /opt/log-up/
 		echo "[ \033[1;32m*\033[0m ] Dando permissoes..."
-		echo "0 *	* * *	root	/etc/Controle/Alocacao.sh $file $buf $login $pass" >> /etc/crontab
+		echo "0 *	* * *	root	/opt/log-up/sync_up.sh $file $buf $login $pass" >> /etc/crontab
 		echo "Agendando crontab, veja em /etc/crontab/:"
 		sleep 1
 		cat /etc/crontab
 		
 	}	||	{
-		echo "[ \033[1;31mX\033[0m ] /etc/Controle/\n"
-		echo "[ \033[1;31mX\033[0m ] Copiar arquivo para /etc/Controle/"
+		echo "[ \033[1;31mX\033[0m ] /opt/log-up/\n"
+		echo "[ \033[1;31mX\033[0m ] Copiar arquivo para /opt/log-up/"
 		echo "[ \033[1;31mX\033[0m ] Hmm, permissão nao é porque estás como root... \ndê uma analizada nisso"
 		sleep 1
 		exit
