@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function decide(){
   # Passamentos de variáveis
   arq_bruto=$(stat --printf "%s\n" $1)
